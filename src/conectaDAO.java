@@ -8,16 +8,21 @@ import javax.swing.JOptionPane;
 public class conectaDAO {
     
     public Connection connectDB(){
-        Connection conn = null;
-        
-        try {
-        
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/leiloes", "root" , "312705");
-            
-        } catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
+         try {
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/Leiloes ", // linha de conexao
+                    "root", // usuario do mysql
+                    "312705"// senha do mysql
+         
+            );
+            JOptionPane.showMessageDialog(null,"MYSQL conectado com sucesso");
+            return conn;
+           
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro ao conectar: " + e.getMessage());
+            return null;
         }
-        return conn;
     }
     
 }
